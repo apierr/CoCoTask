@@ -1,0 +1,8 @@
+# Packages #
+############
+components/
+
+# OS generated files #
+######################
+*.swp
+.idea/
