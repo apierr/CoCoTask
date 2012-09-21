@@ -1,0 +1,10 @@
+{
+    "name": "CoCoTask",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "latest",
+        "requirejs": "latest",
+        "backbone": "latest",
+        "marionette": "latest"
+    }
+}
