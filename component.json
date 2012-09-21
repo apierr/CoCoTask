@@ -5,6 +5,7 @@
         "jquery": "latest",
         "requirejs": "latest",
         "backbone": "latest",
-        "marionette": "latest"
+        "marionette": "latest",
+        "backbone.marionette.handlebars": "latest"
     }
 }

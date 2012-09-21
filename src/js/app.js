@@ -1,7 +1,8 @@
 /*global define*/
 define([
-    'marionette'
-], function (Marionette) {
+    'marionette',
+    'marionetteHandlebars'
+], function (Marionette, MarionetteHandlebars) {
     "use strict";
     // this module defines the main application, which will be used by other
     // modules to dispatch or listen to events. It should not define its own
@@ -15,6 +16,8 @@ define([
         main: '#main',
         modal: '#modal'
     });
+
+    console.log(MarionetteHandlebars);
 
     return app;
 });
