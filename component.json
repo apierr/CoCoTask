@@ -5,6 +5,8 @@
         "jquery": "latest",
         "requirejs": "latest",
         "backbone": "latest",
-        "marionette": "latest"
+        "marionette": "latest",
+        "handlebars": "latest",
+        "requirejs-text": "latest"
     }
 }
