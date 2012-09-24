@@ -1,9 +1,8 @@
 /*global define*/
 define([
     'backbone',
-    'tpl!../../templates/header.hbs',
-    '../app'
-], function (Backbone, headerTemplate, app) {
+    'tpl!../../templates/header.hbs'
+], function (Backbone, headerTemplate) {
     "use strict";
 
     return Backbone.View.extend({
