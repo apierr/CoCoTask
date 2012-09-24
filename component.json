@@ -6,6 +6,7 @@
         "requirejs": "latest",
         "backbone": "latest",
         "marionette": "latest",
-        "backbone.marionette.handlebars": "latest"
+        "handlebars": "latest",
+        "requirejs-text": "latest"
     }
 }
