@@ -11,7 +11,6 @@ define([
 
     app.addRegions({
         header: '#header',
-        sidebar: '#sidebar',
         main: '#main',
         modal: '#modal'
     });
