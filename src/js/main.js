@@ -2,16 +2,17 @@
 (function () {
     "use strict";
 
-    var vendorDir = '../../components/';
+    var componentsDir = '../../components/';
 
     require.config({
         paths: {
-            underscore: vendorDir + 'underscore/underscore-min',
-            jquery: vendorDir + 'jquery/jquery',
-            backbone: vendorDir + 'backbone/backbone-min',
-            marionette: vendorDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
-            handlebars: vendorDir + 'handlebars.js/handlebars-1.0.0-rc.1',
-            text: vendorDir + 'text/text',
+            underscore: componentsDir + 'underscore/underscore-min',
+            jquery: componentsDir + 'jquery/jquery',
+            backbone: componentsDir + 'backbone/backbone-min',
+            marionette: componentsDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
+            handlebars: componentsDir + 'handlebars.js/handlebars-1.0.0-rc.1',
+            bootstrapCollapse: componentsDir + 'bootstrap/js/bootstrap-collapse',
+            text: componentsDir + 'text/text',
             tpl: 'utils/handlebars_templates'
         },
         shim: {
@@ -23,11 +24,14 @@
                 exports: 'Backbone'
             },
             marionette: {
-                deps: ['backbone'],
+                deps: ['backbone', 'underscore', 'jquery'],
                 exports: 'marionette'
             },
             handlebars: {
                 exports: 'Handlebars'
+            },
+            bootstrapCollapse: {
+                deps: ['jquery']
             }
         }
     });
