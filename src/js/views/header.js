@@ -1,7 +1,8 @@
 /*global define*/
 define([
     'backbone',
-    'tpl!../../templates/header.hbs'
+    'tpl!../../templates/header.hbs',
+    'bootstrapCollapse'
 ], function (Backbone, headerTemplate) {
     "use strict";
 
