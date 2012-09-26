@@ -1,17 +1,17 @@
 /*global define*/
 define([
     'backbone',
-    'tpl!../../templates/header.hbs',
+    'tpl!../../templates/main.hbs',
     'bootstrapCollapse'
-], function (Backbone, headerTemplate) {
+], function (Backbone, mainTemplate) {
     "use strict";
 
     return Backbone.View.extend({
 
-        className: 'navbar navbar-inverse navbar-fixed-top',
+        className: 'container',
 
         render: function () {
-            this.$el.html(headerTemplate());
+            this.$el.html(mainTemplate());
 
             return this;
         }

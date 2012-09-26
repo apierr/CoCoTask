@@ -38,11 +38,13 @@
 
     require([
         './app',
-        'views/header'
-    ], function (app, HeaderView) {
+        'views/header',
+        'views/main'
+    ], function (app, HeaderView, MainView) {
 
         app.addInitializer(function () {
             app.header.show(new HeaderView());
+            app.main.show(new MainView());
         });
 
         app.start();
