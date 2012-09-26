@@ -1,6 +1,6 @@
 /*global require*/
 (function () {
-    "use strict";
+    'use strict';
 
     var componentsDir = '../../components/';
 
@@ -9,6 +9,7 @@
             underscore: componentsDir + 'underscore/underscore-min',
             jquery: componentsDir + 'jquery/jquery',
             backbone: componentsDir + 'backbone/backbone-min',
+            backboneLocalStorage: componentsDir + 'Backbone.localStorage/backbone.localStorage-min',
             marionette: componentsDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
             handlebars: componentsDir + 'handlebars.js/handlebars-1.0.0-rc.1',
             bootstrapCollapse: componentsDir + 'bootstrap/js/bootstrap-collapse',
@@ -24,7 +25,7 @@
                 exports: 'Backbone'
             },
             marionette: {
-                deps: ['backbone', 'underscore', 'jquery'],
+                deps: ['backbone'],
                 exports: 'marionette'
             },
             handlebars: {
@@ -32,6 +33,9 @@
             },
             bootstrapCollapse: {
                 deps: ['jquery']
+            },
+            backboneLocalStorage: {
+                deps: ['backbone']
             }
         }
     });
@@ -39,12 +43,18 @@
     require([
         './app',
         'views/header',
-        'views/main'
-    ], function (app, HeaderView, MainView) {
+        'views/main',
+        'collections/tasks'
+    ], function (app, HeaderView, MainView, TaskCollection) {
 
         app.addInitializer(function () {
-            app.header.show(new HeaderView());
-            app.main.show(new MainView());
+            app.taskCollection = new TaskCollection();
+            app.taskCollection.fetch({
+                success: function () {
+                    app.header.show(new HeaderView());
+                    app.main.show(new MainView());
+                }
+            });
         });
 
         app.start();

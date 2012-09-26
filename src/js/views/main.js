@@ -3,7 +3,7 @@ define([
     'backbone',
     'marionette',
     'tpl!../../templates/main.hbs',
-    './task',
+    './task/header',
     'bootstrapCollapse'
 ], function (Backbone, Marionette, mainTemplate, TaskView) {
     "use strict";

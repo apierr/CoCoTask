@@ -8,6 +8,7 @@
         "marionette": "latest",
         "handlebars": "latest",
         "requirejs-text": "latest",
-        "bootstrap": "latest"
+        "bootstrap": "latest",
+	"backbone.localStorage": "latest"
     }
 }

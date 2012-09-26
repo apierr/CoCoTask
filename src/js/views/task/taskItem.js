@@ -1,7 +1,7 @@
 /*global define*/
 define([
     'marionette',
-    'tpl!../../templates/taskItem.hbs'
+    'tpl!../../../templates/task/taskItem.hbs'
 ], function (Marionette, taskItemTemplate) {
     "use strict";
 
