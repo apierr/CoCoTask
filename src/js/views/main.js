@@ -30,6 +30,5 @@ define([
             done: '#task-done'
         }
 
-
     });
 });
