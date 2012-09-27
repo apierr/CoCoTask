@@ -15,12 +15,11 @@ define([
         template: mainTemplate,
 
         initialize: function () {
-            // TODO take the following model from localstorage
-            var taskModel = new Backbone.Model();
             this.on('render', function () {
-                this.todo.show(new TaskView({model: taskModel.set('type', 'Todo')}));
-                this.doing.show(new TaskView({model: taskModel.set('type', 'Doing')}));
-                this.done.show(new TaskView({model: taskModel.set('type', 'Done')}));
+                // TODO should I avoid to create a model just for a parameter?
+                this.todo.show(new TaskView({model: new Backbone.Model({'type': 'todo'})}));
+                this.doing.show(new TaskView({model: new Backbone.Model({'type': 'doing'})}));
+                this.done.show(new TaskView({model: new Backbone.Model({'type': 'done'})}));
             });
         },
 
