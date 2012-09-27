@@ -20,7 +20,9 @@ define([
         },
 
         appendHtml: function (collectionView, itemView) {
-            collectionView.$el.find('.task-list').append(itemView.el);
+            if (itemView.model.get('type') === this.options.taskType)  {
+                collectionView.$el.find('.task-list').append(itemView.el);
+            }
         },
 
         createOnEnter: function (e) {
@@ -30,8 +32,7 @@ define([
             }
             this.collection.create({
                 name: this.$el.find('input').val(),
-                // TODO to fix this hard-coded value
-                type: 'todo'
+                type: this.options.taskType
             });
         },
 
