@@ -11,12 +11,28 @@ define([
 
         className: 'm-task',
 
+        events: {
+            'keypress .new-task': 'createOnEnter'
+        },
+
         initialize: function () {
             this.collection = app.taskCollection;
         },
 
         appendHtml: function (collectionView, itemView) {
             collectionView.$el.find('.task-list').append(itemView.el);
+        },
+
+        createOnEnter: function (e) {
+            // TODO use the form
+            if (e.keyCode != 13) {
+                return;
+            }
+            this.collection.create({
+                name: this.$el.find('input').val(),
+                // TODO to fix this hard-coded value
+                type: 'todo'
+            });
         },
 
         itemView: taskItemView,

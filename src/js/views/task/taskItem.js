@@ -9,7 +9,15 @@ define([
 
         template: taskItemTemplate,
 
-        tagName: 'li'
+        tagName: 'li',
+
+        events: {
+            'click .destroy': 'destroyTask'
+        },
+
+        destroyTask: function () {
+            this.model.destroy();
+        }
 
     });
 });
