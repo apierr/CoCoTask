@@ -1,0 +1,62 @@
+.m-task {
+
+  li {
+    position: relative;
+    font-size: @xxl-font-size;
+    border-bottom: 1px dotted #ccc;
+
+    .destroy:after {
+      content: '✖';
+    }
+
+    &:hover .destroy {
+      display: block;
+    }
+  }
+
+  .task-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .new-task {
+    position: relative;
+    margin: 0;
+    width: 95%;
+    font-size: @xxl-font-size;
+    line-height: 1.4em;
+    outline: none;
+    padding: 6px;
+    border: 1px solid @color-gray;
+    box-shadow: inset 0 -1px 5px 0 @color-gray;
+  }
+
+  .destroy {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    color: @color-black;
+  }
+
+  .view label {
+    position: relative;
+    font-size: @xxxl-font-size;
+    border-bottom: 1px dotted #ccc;
+    line-height: 1.5;
+  }
+
+  button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+  }
+
+}
