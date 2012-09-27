@@ -7,7 +7,9 @@ define([
 
     return Marionette.ItemView.extend({
 
-        template: taskItemTemplate
+        template: taskItemTemplate,
+
+        tagName: 'li'
 
     });
 });
