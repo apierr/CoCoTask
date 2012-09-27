@@ -16,7 +16,7 @@ define([
         },
 
         appendHtml: function (collectionView, itemView) {
-            collectionView.$el.find('ul.task-list').append(itemView.el);
+            collectionView.$el.find('.task-list').append(itemView.el);
         },
 
         itemView: taskItemView,
