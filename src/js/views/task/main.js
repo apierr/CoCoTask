@@ -15,6 +15,12 @@ define([
             'keypress .new-task': 'createOnEnter'
         },
 
+        serializeData: function () {
+            return {
+                type: this.options.taskType
+            }
+        },
+
         initialize: function () {
             this.collection = app.taskCollection;
         },
@@ -34,6 +40,8 @@ define([
                 name: this.$el.find('input').val(),
                 type: this.options.taskType
             });
+            // TODO the reset of input value should be done just on success
+            this.$el.find('input').val('');
         },
 
         itemView: taskItemView,
