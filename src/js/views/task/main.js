@@ -24,6 +24,7 @@ define([
         },
 
         createOnEnter: function (e) {
+            // TODO use the form
             if (e.keyCode != 13) {
                 return;
             }
