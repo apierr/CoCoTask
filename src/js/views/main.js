@@ -16,7 +16,7 @@ define([
 
         initialize: function () {
             this.on('render', function () {
-                // TODO should I avoid to create a model just for a parameter?
+                // TODO should I avoid to create a model just for one parameter?
                 this.todo.show(new TaskView({model: new Backbone.Model({'type': 'todo'})}));
                 this.doing.show(new TaskView({model: new Backbone.Model({'type': 'doing'})}));
                 this.done.show(new TaskView({model: new Backbone.Model({'type': 'done'})}));

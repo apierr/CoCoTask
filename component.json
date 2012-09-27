@@ -9,6 +9,6 @@
         "handlebars": "latest",
         "requirejs-text": "latest",
         "bootstrap": "latest",
-	"backbone.localStorage": "latest"
+	    "backbone.localStorage": "latest"
     }
 }
