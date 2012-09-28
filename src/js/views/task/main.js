@@ -17,7 +17,7 @@ define([
         template: taskTemplate,
 
         events: {
-            'keypress .new-task': 'createOnEnter',
+            'submit form': 'createTask',
             'sortreceive': 'onSortReceive'
         },
 
@@ -41,17 +41,18 @@ define([
             }
         },
 
-        createOnEnter: function (e) {
-            // TODO use the form
-            if (e.keyCode !== 13) {
-                return;
+        createTask: function (event) {
+            var form = event.currentTarget;
+
+            event.preventDefault();
+            if (form.checkValidity && form.checkValidity()) {
+                this.collection.create({
+                    name: this.$(form).find('input').val(),
+                    type: this.options.taskType
+                });
+                // TODO the reset of input value should be done just on success
+                this.$el.find('input').val('');
             }
-            this.collection.create({
-                name: this.$el.find('input').val(),
-                type: this.options.taskType
-            });
-            // TODO the reset of input value should be done just on success
-            this.$el.find('input').val('');
         },
 
         onRender: function () {
