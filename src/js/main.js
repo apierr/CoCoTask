@@ -16,6 +16,9 @@
             handlebars: componentsDir + 'handlebars.js/handlebars-1.0.0-rc.1',
             bootstrapCollapse: componentsDir + 'bootstrap/js/bootstrap-collapse',
             bootstrapAlert: componentsDir + 'bootstrap/js/bootstrap-alert',
+            bootstrapPopover: componentsDir + 'bootstrap/js/bootstrap-popover',
+            bootstrapTooltip: componentsDir + 'bootstrap/js/bootstrap-tooltip',
+            bootstrapEditable: '../../vendor/js/bootstrap-editable',
             text: componentsDir + 'text/text',
             tpl: 'utils/handlebars_templates'
         },
@@ -39,6 +42,12 @@
             },
             bootstrapAlert: {
                 deps: ['jquery']
+            },
+            bootstrapPopover: {
+                deps: ['jquery', 'bootstrapTooltip']
+            },
+            bootstrapEditable: {
+                deps: ['jquery', 'bootstrapPopover']
             },
             backboneLocalStorage: {
                 deps: ['backbone']
