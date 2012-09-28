@@ -12,11 +12,22 @@ define([
         tagName: 'li',
 
         events: {
-            'click .destroy': 'destroyTask'
+            'click .destroy': 'destroyTask',
+            'drop': 'onDrop'
+        },
+
+        initialize: function (options) {
+            this.taskType = options.taskType;
         },
 
         destroyTask: function () {
             this.model.destroy();
+        },
+
+        onDrop: function (e, newTaskState) {
+            this.model.save({
+                type: newTaskState
+            });
         }
 
     });
