@@ -1,4 +1,10 @@
 .m-task {
+
+  border: 1px solid #E8E8E8;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  .border-radius(15px);
+
   h2 {
     text-transform: uppercase;
   }
@@ -6,7 +12,6 @@
   li {
     position: relative;
     font-size: @xxl-font-size;
-    border-bottom: 1px dotted #ccc;
 
     .destroy:after {
       content: '✖';
@@ -18,14 +23,14 @@
   }
 
   .task-list {
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
     list-style: none;
     min-height: 50px;
-    background: @list-color;
   }
 
   .new-task {
+    .border-radius(10px);
     position: relative;
     margin: 0;
     width: 95%;
@@ -49,12 +54,17 @@
     color: @color-black;
   }
 
-  .view label {
-    position: relative;
-    font-size: @xxxl-font-size;
-    border-bottom: 1px dotted #ccc;
-    line-height: 1.5;
-    cursor: pointer;
+  .view {
+    background: @list-color;
+    .border-radius(10px);
+    padding: 0 10px;
+
+    label {
+      position: relative;
+      font-size: @xxxl-font-size;
+      line-height: 1.5;
+      cursor: pointer;
+    }
   }
 
   button {
@@ -64,5 +74,4 @@
     background: none;
     font-size: 100%;
   }
-
 }

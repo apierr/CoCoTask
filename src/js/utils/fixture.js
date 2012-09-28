@@ -1,23 +1,28 @@
 /*global define*/
 define([
-], function () {
+    'backbone'
+], function (Backbone) {
     'use strict';
 
     return [
         {
-            name: 'buy bread and milk',
+            name: 'Buying a present for my daughter\'s birthday',
             type: 'todo'
         },
         {
-            name: 'study css',
+            name: 'Buy bread and milk',
+            type: 'todo'
+        },
+        {
+            name: 'Study css',
             type: 'done'
         },
         {
-            name: 'study less',
+            name: 'Play with friends at football',
             type: 'done'
         },
         {
-            name: 'sleep',
+            name: 'I am working on my laptop, and next to me my iPod is charging',
             type: 'doing'
         }
     ];
