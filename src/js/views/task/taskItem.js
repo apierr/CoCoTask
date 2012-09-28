@@ -28,7 +28,8 @@ define([
                 type: 'textarea',
                 name: 'task-name',
                 placement: 'top',
-                validate: this.edit
+                validate: this.edit,
+                template: '<textarea rows="3"></textarea>'
             });
         },
 
