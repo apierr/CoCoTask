@@ -2,7 +2,6 @@ CoCo Task
 =================
 
 CoCo Task is a simple and nice to use user interface to manage tasks.
-It promotes COoperation and COmpetition amongst its members to achieve tasks and meet deadlines in order to reach the company's overall objectives.
 
 * It uses [Bower](https://github.com/twitter/bower) as package manager for easily install assets such as images, CSS and JavaScript, and manages dependencies for you.
 * It uses [LESS CSS Preprocessor](https://github.com/cloudhead/less.js) for Smarter Style Sheets.
