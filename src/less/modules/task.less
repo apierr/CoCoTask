@@ -31,9 +31,10 @@
 
   .new-task {
     .border-radius(10px);
+    .box-sizing(border-box);
     position: relative;
     margin: 0;
-    width: 95%;
+    width: 100%;
     font-size: @xxl-font-size;
     line-height: 1.4em;
     outline: none;
@@ -74,4 +75,8 @@
     background: none;
     font-size: 100%;
   }
+}
+
+textarea {
+  height: 20px;
 }
