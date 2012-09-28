@@ -15,12 +15,20 @@ define([
             'keypress .new-task': 'createOnEnter'
         },
 
+        serializeData: function () {
+            return {
+                type: this.options.taskType
+            }
+        },
+
         initialize: function () {
             this.collection = app.taskCollection;
         },
 
         appendHtml: function (collectionView, itemView) {
-            collectionView.$el.find('.task-list').append(itemView.el);
+            if (itemView.model.get('type') === this.options.taskType)  {
+                collectionView.$el.find('.task-list').append(itemView.el);
+            }
         },
 
         createOnEnter: function (e) {
@@ -30,9 +38,10 @@ define([
             }
             this.collection.create({
                 name: this.$el.find('input').val(),
-                // TODO to fix this hard-coded value
-                type: 'todo'
+                type: this.options.taskType
             });
+            // TODO the reset of input value should be done just on success
+            this.$el.find('input').val('');
         },
 
         itemView: taskItemView,
