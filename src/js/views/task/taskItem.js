@@ -1,8 +1,10 @@
 /*global define*/
 define([
+    'underscore',
     'marionette',
-    'tpl!../../../templates/task/taskItem.hbs'
-], function (Marionette, taskItemTemplate) {
+    'tpl!../../../templates/task/taskItem.hbs',
+    'bootstrapEditable'
+], function (_, Marionette, taskItemTemplate) {
     "use strict";
 
     return Marionette.ItemView.extend({
@@ -17,7 +19,17 @@ define([
         },
 
         initialize: function (options) {
+            _.bindAll(this, ['edit']);
             this.taskType = options.taskType;
+        },
+
+        onRender: function () {
+            this.$el.find('label').editable({
+                type: 'textarea',
+                name: 'task-name',
+                placement: 'top',
+                validate: this.edit
+            });
         },
 
         destroyTask: function () {
@@ -27,6 +39,12 @@ define([
         onDrop: function (e, newTaskState) {
             this.model.save({
                 type: newTaskState
+            });
+        },
+
+        edit: function (value) {
+            this.model.save({
+                name: value
             });
         }
 
