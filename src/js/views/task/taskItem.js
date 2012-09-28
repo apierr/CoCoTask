@@ -37,7 +37,7 @@ define([
             this.model.destroy();
         },
 
-        onDrop: function (e, newTaskState) {
+        onDrop: function (event, newTaskState) {
             this.model.save({
                 type: newTaskState
             });
