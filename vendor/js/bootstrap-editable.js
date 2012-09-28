@@ -735,7 +735,7 @@
 
         //textarea
         textarea:{
-            template:'<textarea rows="8"></textarea>',
+            template:'<textarea rows="3"></textarea>',
             inputclass:'span3',
             renderInput:function () {
                 this.$input = $(this.settings.template);
