@@ -11,7 +11,7 @@ It promotes COoperation and COmpetition amongst its members to achieve tasks and
 * It uses [RequireJS](http://requirejs.org/) which promotes the Javascript AMD format, allowing for highly portable modules that could be loaded easily and asynchronously.
 * It uses [Backbone JS](http://backbonejs.org/) to create a good design patterns such as the Observer/Subscriber pattern, dependency injection etc.
 
-To get started -- checkout http://CoCoTask
+To get started -- checkout [CoCoTask](http://computerone.altervista.org/CoCoTask/index.html)
 
 Installation
 -----
