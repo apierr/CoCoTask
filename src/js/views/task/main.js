@@ -30,7 +30,8 @@ define([
 
         serializeData: function () {
             return {
-                type: this.options.taskType
+                type: this.options.taskType,
+                createTask: this.options.createTask
             };
         },
 
