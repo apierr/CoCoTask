@@ -15,6 +15,7 @@
             marionette: componentsDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
             handlebars: componentsDir + 'handlebars.js/handlebars-1.0.0-rc.1',
             bootstrapCollapse: componentsDir + 'bootstrap/js/bootstrap-collapse',
+            bootstrapAlert: componentsDir + 'bootstrap/js/bootstrap-alert',
             text: componentsDir + 'text/text',
             tpl: 'utils/handlebars_templates'
         },
@@ -34,6 +35,9 @@
                 exports: 'Handlebars'
             },
             bootstrapCollapse: {
+                deps: ['jquery']
+            },
+            bootstrapAlert: {
                 deps: ['jquery']
             },
             backboneLocalStorage: {
