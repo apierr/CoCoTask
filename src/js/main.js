@@ -8,6 +8,8 @@
         paths: {
             underscore: componentsDir + 'underscore/underscore-min',
             jquery: componentsDir + 'jquery/jquery',
+            jqueryUi: componentsDir + 'jquery-ui/jquery-ui.min',
+            queryUiDraggable: componentsDir + 'jquery-ui/ui/jquery.ui.draggable.min',
             backbone: componentsDir + 'backbone/backbone-min',
             backboneLocalStorage: componentsDir + 'Backbone.localStorage/backbone.localStorage-min',
             marionette: componentsDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
@@ -36,6 +38,12 @@
             },
             backboneLocalStorage: {
                 deps: ['backbone']
+            },
+            jqueryUi: {
+                deps: ['jquery']
+            },
+            queryUiDraggable: {
+                deps: ['jqueryUi']
             }
         }
     });

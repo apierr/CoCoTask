@@ -5,15 +5,19 @@ define([
 
     return [
         {
-            name: 'task 1',
+            name: 'buy bread and milk',
             type: 'todo'
         },
         {
-            name: 'task 2',
+            name: 'study css',
             type: 'done'
         },
         {
-            name: 'task 3',
+            name: 'study less',
+            type: 'done'
+        },
+        {
+            name: 'sleep',
             type: 'doing'
         }
     ];

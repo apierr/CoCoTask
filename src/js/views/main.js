@@ -18,13 +18,16 @@ define([
             this.on('render', function () {
                 // TODO it works but probably it could be improved
                 this.todo.show(new TaskView({
-                    taskType: 'todo'
+                    taskType: 'todo',
+                    createTask: 'What needs to be done?'
                 }));
                 this.doing.show(new TaskView({
-                    taskType: 'doing'
+                    taskType: 'doing',
+                    createTask: 'What are you doing?'
                 }));
                 this.done.show(new TaskView({
-                    taskType: 'done'
+                    taskType: 'done',
+                    createTask: 'What have you done?'
                 }));
             });
         },

@@ -20,6 +20,7 @@ Install the dependencies with [Bower](https://github.com/twitter/bower) (assumin
 you have Bower available globally):
 
     bower install
+    chmod 755 components/*
 
 When you run bower install, Bower will read the `component.json` file, resolve all the relevant dependencies and install them.
 
