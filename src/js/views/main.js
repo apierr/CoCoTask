@@ -4,6 +4,7 @@ define([
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
+    'bootstrapAlert',
     'bootstrapCollapse'
 ], function (Backbone, Marionette, mainTemplate, TaskView) {
     "use strict";
