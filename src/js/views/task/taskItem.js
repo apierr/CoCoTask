@@ -27,7 +27,8 @@ define([
             this.$el.find('label').editable({
                 type: 'textarea',
                 name: 'task-name',
-                validate: this.edit
+                validate: this.edit,
+                template: '<textarea rows="3"></textarea>'
             });
         },
 
@@ -35,7 +36,7 @@ define([
             this.model.destroy();
         },
 
-        onDrop: function (e, newTaskState) {
+        onDrop: function (event, newTaskState) {
             this.model.save({
                 type: newTaskState
             });

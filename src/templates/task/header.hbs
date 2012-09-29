@@ -1,4 +1,6 @@
 <h2>{{ type }} task</h2>
-<input class="new-task" placeholder="{{ createTask }}" autofocus/>
+<form method="post">
+    <input class="new-task" placeholder="{{ createTask }}" required="required" autofocus/>
+</form>
 <ul class="task-list connectedSortable"></ul>
 
