@@ -1,11 +1,8 @@
 /*global define*/
 define([
-    'underscore',
     'backbone'
-], function(_, Backbone) {
+], function(Backbone) {
     'use strict';
 
-    return Backbone.Model.extend({
-
-    });
+    return Backbone.Model.extend();
 });
