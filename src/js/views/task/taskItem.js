@@ -27,7 +27,6 @@ define([
             this.$el.find('label').editable({
                 type: 'textarea',
                 name: 'task-name',
-                placement: 'top',
                 validate: this.edit,
                 template: '<textarea rows="3"></textarea>'
             });
