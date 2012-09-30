@@ -33,6 +33,17 @@ define([
             });
         },
 
+        onRender: function () {
+            var self = this;
+            setTimeout(function () {
+                $('.column').sortable({
+                    connectWith: '.column'
+                });
+                $('.portlet').addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all');
+                $('.column').disableSelection();
+            }, 0);
+        },
+
         regions: {
             todo: '#task-todo',
             doing: '#task-doing',

@@ -10,7 +10,7 @@ define([
 
     return Marionette.CompositeView.extend({
 
-        className: 'm-task',
+        className: 'm-task portlet',
 
         itemView: taskItemView,
 
