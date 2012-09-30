@@ -43,8 +43,11 @@
             bootstrapAlert: {
                 deps: ['jquery']
             },
+            bootstrapTooltip: {
+                deps: ['jquery']
+            },
             bootstrapPopover: {
-                deps: ['jquery', 'bootstrapTooltip']
+                deps: ['bootstrapTooltip']
             },
             bootstrapEditable: {
                 deps: ['jquery', 'bootstrapPopover']
