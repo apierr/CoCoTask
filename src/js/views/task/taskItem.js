@@ -20,7 +20,8 @@ define([
 
         initialize: function (options) {
             _.bindAll(this, ['edit']);
-            this.taskType = options.taskType;
+            this.taskType = options.compositeView.taskType;
+            this.compositeView = options.compositeView;
         },
 
         onRender: function () {
@@ -34,6 +35,7 @@ define([
 
         destroyTask: function () {
             this.model.destroy();
+            this.compositeView.render();
         },
 
         onDrop: function (event, newTaskState) {

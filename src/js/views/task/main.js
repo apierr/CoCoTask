@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, setTimeout*/
 define([
     'marionette',
     'tpl!../../../templates/task/header.hbs',
@@ -18,20 +18,25 @@ define([
 
         events: {
             'submit form': 'createTask',
-            'sortreceive': 'onSortReceive'
+            'sortreceive': 'onSortReceive',
+            'sortremove': 'onSortRemove'
         },
 
         initialize: function () {
             this.collection = app.taskCollection;
             this.itemViewOptions = {
-                taskType: this.options.taskType
+                compositeView: this
             };
         },
 
         serializeData: function () {
+            var filteredTaskCollection = app.taskCollection.where({
+                type: this.options.taskType
+            });
             return {
                 type: this.options.taskType,
-                createTask: this.options.createTask
+                createTask: this.options.createTask,
+                taskLength: filteredTaskCollection.length
             };
         },
 
@@ -52,6 +57,7 @@ define([
                 });
                 // TODO the reset of input value should be done just on success
                 this.$el.find('input').val('');
+                this.render();
             }
         },
 
@@ -63,6 +69,15 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', this.options.taskType);
+            this.render();
+        },
+
+        onSortRemove: function () {
+            var self = this;
+            setTimeout(function () {
+                self.serializeData();
+                self.render();
+            }, 0);
         }
 
     });
