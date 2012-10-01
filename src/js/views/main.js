@@ -1,10 +1,9 @@
-/*global define, setTimeout*/
+/*global define*/
 define([
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
-    'bootstrapAlert',
-    'bootstrapCollapse'
+    'jqueryUi'
 ], function (Marionette, mainTemplate, TaskView) {
     "use strict";
 

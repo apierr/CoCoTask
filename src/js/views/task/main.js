@@ -4,7 +4,7 @@ define([
     'tpl!../../../templates/task/header.hbs',
     '../../app',
     './taskItem',
-    'queryUiDraggable'
+    'jqueryUi'
 ], function (Marionette, taskTemplate, app, taskItemView) {
     "use strict";
 
