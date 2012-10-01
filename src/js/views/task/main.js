@@ -24,9 +24,7 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this);
-            // TODO _.bindAll(this, ['onSortRemove']); raises the following error
-            // Uncaught TypeError: Object [object Window] has no method 'resetItemViewContainer'  backbone.marionette.min.js:5
+            _.bindAll(this, ['updateTaskLength']);
             this.collection = app.taskCollection;
             this.itemViewOptions = {
                 compositeView: this
@@ -34,13 +32,10 @@ define([
         },
 
         serializeData: function () {
-            var filteredTaskCollection = app.taskCollection.where({
-                type: this.options.taskType
-            });
             return {
                 type: this.options.taskType,
                 createTask: this.options.createTask,
-                taskLength: filteredTaskCollection.length
+                taskLength: this.getTaskLength()
             };
         },
 
@@ -61,7 +56,8 @@ define([
                 });
                 // TODO the reset of input value should be done just on success
                 this.$el.find('input').val('');
-                this.render();
+                // TODO updateTaskLength should be done just on success, also because the collection could be not updated
+                setTimeout(this.updateTaskLength, 0);
             }
         },
 
@@ -73,11 +69,22 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', this.options.taskType);
-            this.render();
+            setTimeout(this.updateTaskLength, 0);
         },
 
         onSortRemove: function () {
-            setTimeout(this.render, 0);
+            setTimeout(this.updateTaskLength, 0);
+        },
+
+        getTaskLength: function () {
+            var filteredTaskCollection = app.taskCollection.where({
+                type: this.options.taskType
+            });
+            return filteredTaskCollection.length;
+        },
+
+        updateTaskLength: function () {
+            this.$el.find('.task-length').text(this.getTaskLength());
         }
 
     });
