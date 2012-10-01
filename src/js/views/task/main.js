@@ -1,4 +1,4 @@
-/*global define, setTimeout*/
+/*global define*/
 define([
     'underscore',
     'marionette',
@@ -19,13 +19,12 @@ define([
 
         events: {
             'submit form': 'createTask',
-            'sortreceive': 'onSortReceive',
-            'sortremove': 'onSortRemove'
+            'sortreceive': 'onSortReceive'
         },
 
         initialize: function () {
             _.bindAll(this, ['updateTaskLength']);
-            app.vent.on('taskDeleted', this.updateTaskLength);
+            app.vent.on('itemsNumberChanged', this.updateTaskLength);
             this.collection = app.taskCollection;
         },
 
@@ -52,10 +51,10 @@ define([
                     name: this.$(form).find('input').val(),
                     type: this.options.taskType
                 });
-                // TODO the reset of input value should be done just on success
+                // TODO the following two lines of code should be done just on success?
                 this.$el.find('input').val('');
-                // TODO updateTaskLength should be done just on success, also because the collection could be not updated
-                setTimeout(this.updateTaskLength, 0);
+                app.vent.trigger('itemsNumberChanged');
+
             }
         },
 
@@ -67,11 +66,6 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', this.options.taskType);
-            setTimeout(this.updateTaskLength, 0);
-        },
-
-        onSortRemove: function () {
-            setTimeout(this.updateTaskLength, 0);
         },
 
         getTaskLength: function () {
