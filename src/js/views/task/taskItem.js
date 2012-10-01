@@ -33,15 +33,22 @@ define([
         },
 
         destroyTask: function () {
-            this.model.destroy();
+            this.model.destroy({
+                success: function () {
+                    app.vent.trigger('itemsNumberChanged');
+                }
+            });
             app.vent.trigger('itemsNumberChanged');
         },
 
         onDrop: function (event, newTaskState) {
             this.model.save({
                 type: newTaskState
+            }, {
+                success: function () {
+                    app.vent.trigger('itemsNumberChanged');
+                }
             });
-            app.vent.trigger('itemsNumberChanged');
         },
 
         editTaskName: function (value) {

@@ -23,7 +23,7 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this, ['updateTaskLength']);
+            _.bindAll(this, 'updateViewOnCreateTask', 'updateTaskLength');
             app.vent.on('itemsNumberChanged', this.updateTaskLength);
             this.collection = app.taskCollection;
         },
@@ -50,12 +50,15 @@ define([
                 this.collection.create({
                     name: this.$(form).find('input').val(),
                     type: this.options.taskType
+                }, {
+                    success: this.updateViewOnCreateTask
                 });
-                // TODO the following two lines of code should be done just on success?
-                this.$el.find('input').val('');
-                app.vent.trigger('itemsNumberChanged');
-
             }
+        },
+
+        updateViewOnCreateTask: function () {
+            this.$el.find('input').val('');
+            app.vent.trigger('itemsNumberChanged');
         },
 
         onRender: function () {
