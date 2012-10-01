@@ -25,10 +25,8 @@ define([
 
         initialize: function () {
             _.bindAll(this, ['updateTaskLength']);
+            app.vent.on('taskDeleted', this.updateTaskLength);
             this.collection = app.taskCollection;
-            this.itemViewOptions = {
-                compositeView: this
-            };
         },
 
         serializeData: function () {
