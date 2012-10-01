@@ -75,7 +75,6 @@ define([
         onSortRemove: function () {
             var self = this;
             setTimeout(function () {
-                self.serializeData();
                 self.render();
             }, 0);
         }
