@@ -1,12 +1,12 @@
-/*global define*/
+/*global define, setTimeout*/
 define([
-    'backbone',
+    'underscore',
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
     'bootstrapAlert',
     'bootstrapCollapse'
-], function (Backbone, Marionette, mainTemplate, TaskView) {
+], function (_, Marionette, mainTemplate, TaskView) {
     "use strict";
 
     return Marionette.Layout.extend({
@@ -16,6 +16,7 @@ define([
         template: mainTemplate,
 
         initialize: function () {
+            _.bindAll(this, ['setSortable']);
             this.on('render', function () {
                 // TODO it works but probably it could be improved
                 this.todo.show(new TaskView({
@@ -34,12 +35,14 @@ define([
         },
 
         onRender: function () {
-            var self = this;
-            setTimeout(function () {
-                $('.column').sortable({
-                    connectWith: '.column'
-                });
-            }, 0);
+            // TODO should setTimeout be avoided?
+            setTimeout(this.setSortable, 0);
+        },
+
+        setSortable: function () {
+            this.$el.find('.column').sortable({
+                connectWith: '.column'
+            });
         },
 
         regions: {
