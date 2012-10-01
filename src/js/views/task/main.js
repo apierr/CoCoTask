@@ -1,11 +1,12 @@
 /*global define*/
 define([
+    'underscore',
     'marionette',
     'tpl!../../../templates/task/header.hbs',
     '../../app',
     './taskItem',
     'queryUiDraggable'
-], function (Marionette, taskTemplate, app, taskItemView) {
+], function (_, Marionette, taskTemplate, app, taskItemView) {
     "use strict";
 
     return Marionette.CompositeView.extend({
@@ -22,16 +23,16 @@ define([
         },
 
         initialize: function () {
+            _.bindAll(this, 'updateViewOnCreateTask', 'updateTaskLength');
+            app.vent.on('itemsNumberChanged', this.updateTaskLength);
             this.collection = app.taskCollection;
-            this.itemViewOptions = {
-                taskType: this.options.taskType
-            };
         },
 
         serializeData: function () {
             return {
                 type: this.options.taskType,
-                createTask: this.options.createTask
+                createTask: this.options.createTask,
+                taskLength: this.getTaskLength()
             };
         },
 
@@ -49,10 +50,15 @@ define([
                 this.collection.create({
                     name: this.$(form).find('input').val(),
                     type: this.options.taskType
+                }, {
+                    success: this.updateViewOnCreateTask
                 });
-                // TODO the reset of input value should be done just on success
-                this.$el.find('input').val('');
             }
+        },
+
+        updateViewOnCreateTask: function () {
+            this.$el.find('input').val('');
+            app.vent.trigger('itemsNumberChanged');
         },
 
         onRender: function () {
@@ -63,6 +69,17 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', this.options.taskType);
+        },
+
+        getTaskLength: function () {
+            var filteredTaskCollection = app.taskCollection.where({
+                type: this.options.taskType
+            });
+            return filteredTaskCollection.length;
+        },
+
+        updateTaskLength: function () {
+            this.$el.find('.task-length').text(this.getTaskLength());
         }
 
     });
