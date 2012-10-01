@@ -36,6 +36,7 @@ define([
 
         onRender: function () {
             // TODO should setTimeout be avoided?
+            // http://stackoverflow.com/questions/12669554/the-sortremove-event-in-jquery-ui
             setTimeout(this.setSortable, 0);
         },
 
