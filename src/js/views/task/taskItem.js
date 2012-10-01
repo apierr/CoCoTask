@@ -20,7 +20,7 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this, ['editTaskName']);
+            _.bindAll(this, 'editTaskName');
         },
 
         onRender: function () {
@@ -41,9 +41,10 @@ define([
             app.vent.trigger('itemsNumberChanged');
         },
 
-        onDrop: function (event, newTaskState) {
+        onDrop: function (event, newAttributes) {
             this.model.save({
-                type: newTaskState
+                type: newAttributes.newType,
+                index: newAttributes.newPosition
             }, {
                 success: function () {
                     app.vent.trigger('itemsNumberChanged');

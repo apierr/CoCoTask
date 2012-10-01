@@ -68,7 +68,11 @@ define([
         },
 
         onSortReceive: function (e, ui) {
-            this.$(ui.item[0]).trigger('drop', this.options.taskType);
+            this.$(ui.item[0]).trigger('drop', {
+                newType: this.options.taskType,
+                newPosition: ui.item.index()
+            });
+
         },
 
         getTaskLength: function () {
