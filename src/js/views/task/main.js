@@ -1,11 +1,12 @@
 /*global define, setTimeout*/
 define([
+    'underscore',
     'marionette',
     'tpl!../../../templates/task/header.hbs',
     '../../app',
     './taskItem',
     'queryUiDraggable'
-], function (Marionette, taskTemplate, app, taskItemView) {
+], function (_, Marionette, taskTemplate, app, taskItemView) {
     "use strict";
 
     return Marionette.CompositeView.extend({
@@ -23,6 +24,9 @@ define([
         },
 
         initialize: function () {
+            _.bindAll(this);
+            // TODO _.bindAll(this, ['onSortRemove']); raises the following error
+            // Uncaught TypeError: Object [object Window] has no method 'resetItemViewContainer'  backbone.marionette.min.js:5
             this.collection = app.taskCollection;
             this.itemViewOptions = {
                 compositeView: this
@@ -73,10 +77,7 @@ define([
         },
 
         onSortRemove: function () {
-            var self = this;
-            setTimeout(function () {
-                self.render();
-            }, 0);
+            setTimeout(this.render, 0);
         }
 
     });
