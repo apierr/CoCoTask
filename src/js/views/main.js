@@ -1,12 +1,10 @@
 /*global define*/
 define([
-    'backbone',
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
-    'bootstrapAlert',
-    'bootstrapCollapse'
-], function (Backbone, Marionette, mainTemplate, TaskView) {
+    'jqueryUi'
+], function (Marionette, mainTemplate, TaskView) {
     "use strict";
 
     return Marionette.Layout.extend({
@@ -30,6 +28,12 @@ define([
                     taskType: 'done',
                     createTask: 'What have you done?'
                 }));
+            });
+        },
+
+        onRender: function () {
+            this.$el.find('.column').sortable({
+                connectWith: '.column'
             });
         },
 
