@@ -1,12 +1,11 @@
 /*global define, setTimeout*/
 define([
-    'underscore',
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
     'bootstrapAlert',
     'bootstrapCollapse'
-], function (_, Marionette, mainTemplate, TaskView) {
+], function (Marionette, mainTemplate, TaskView) {
     "use strict";
 
     return Marionette.Layout.extend({
@@ -16,7 +15,6 @@ define([
         template: mainTemplate,
 
         initialize: function () {
-            _.bindAll(this, ['setSortable']);
             this.on('render', function () {
                 // TODO it works but probably it could be improved
                 this.todo.show(new TaskView({
@@ -35,12 +33,6 @@ define([
         },
 
         onRender: function () {
-            // TODO should setTimeout be avoided?
-            // http://stackoverflow.com/questions/12669554/the-sortremove-event-in-jquery-ui
-            setTimeout(this.setSortable, 0);
-        },
-
-        setSortable: function () {
             this.$el.find('.column').sortable({
                 connectWith: '.column'
             });
