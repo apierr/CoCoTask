@@ -5,13 +5,13 @@ define([
     'tpl!../../../templates/task/header.hbs',
     '../../app',
     './taskItem',
-    'queryUiDraggable'
+    'jqueryUi'
 ], function (_, Marionette, taskTemplate, app, taskItemView) {
     "use strict";
 
     return Marionette.CompositeView.extend({
 
-        className: 'm-task',
+        className: 'm-task portlet',
 
         itemView: taskItemView,
 
