@@ -11,6 +11,7 @@ body {
 // -------------------------------------
 // - It shows a colored box when dragging items or lists
 // - http://jqueryui.com/demos/sortable/#portlets
+
 .row {
   .ui-sortable-placeholder {
     .box-color-heigh;
@@ -21,4 +22,9 @@ body {
   .ui-sortable-placeholder {
     .box-color-heigh(@color-black, 3px);
   }
+}
+
+// it fix the issue of not draggable item in empty column
+.span4 {
+  min-height: 200px;
 }
