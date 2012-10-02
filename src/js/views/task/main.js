@@ -69,10 +69,6 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', this.options.taskType);
-            // TODO just on firefox there is a issue related to bootstrap-editable
-            // it shows the popup even if there is e.stopPropagation() here
-            // the only way to fix this issue is to re-render the view
-            this.render();
         },
 
         getTaskLength: function () {
