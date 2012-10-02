@@ -23,21 +23,23 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this, 'updateViewOnCreateTask', 'updateTaskLength');
+            this.listType = this.options.taskType;
+            _.bindAll(this, 'updateViewOnCreateTask', 'updateTaskLength', 'onSortList');
             app.vent.on('itemsNumberChanged', this.updateTaskLength);
+            app.vent.on('sortList', this.onSortList);
             this.collection = app.taskCollection;
         },
 
         serializeData: function () {
             return {
-                type: this.options.taskType,
+                type: this.listType,
                 createTask: this.options.createTask,
                 taskLength: this.getTaskLength()
             };
         },
 
         appendHtml: function (collectionView, itemView) {
-            if (itemView.model.get('type') === this.options.taskType) {
+            if (itemView.model.get('type') === this.listType) {
                 collectionView.$el.find('.task-list').append(itemView.el);
             }
         },
@@ -49,7 +51,7 @@ define([
             if (form.checkValidity && form.checkValidity()) {
                 this.collection.create({
                     name: this.$(form).find('input').val(),
-                    type: this.options.taskType
+                    type: this.listType
                 }, {
                     success: this.updateViewOnCreateTask
                 });
@@ -69,15 +71,21 @@ define([
 
         onSortReceive: function (e, ui) {
             this.$(ui.item[0]).trigger('drop', {
-                newType: this.options.taskType,
+                newType: this.listType,
                 newPosition: ui.item.index()
             });
+        },
 
+        onSortList: function (model) {
+            if (model.get('type') === this.listType) {
+                // TODO here it needs to be implement the algo for re-sorting the list
+                console.log(model, this);
+            }
         },
 
         getTaskLength: function () {
             var filteredTaskCollection = app.taskCollection.where({
-                type: this.options.taskType
+                type: this.listType
             });
             return filteredTaskCollection.length;
         },

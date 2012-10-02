@@ -20,7 +20,7 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this, 'editTaskName');
+            _.bindAll(this, 'editTaskName', 'onDropTrigger');
         },
 
         onRender: function () {
@@ -46,10 +46,13 @@ define([
                 type: newAttributes.newType,
                 index: newAttributes.newPosition
             }, {
-                success: function () {
-                    app.vent.trigger('itemsNumberChanged');
-                }
+                success: this.onDropTrigger
             });
+        },
+
+        onDropTrigger: function () {
+            app.vent.trigger('itemsNumberChanged');
+            app.vent.trigger('sortList', this.model);
         },
 
         editTaskName: function (value) {
