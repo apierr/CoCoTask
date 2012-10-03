@@ -23,7 +23,7 @@ define([
         },
 
         comparator: function(task) {
-            return task.get('index');
+            return task.get('next');
         },
 
         loadFixture: function () {

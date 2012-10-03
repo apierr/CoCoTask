@@ -52,16 +52,20 @@ define([
         },
 
         onDrop: function (event, newAttributes) {
+            this.isListChanged = this.model.get('type') !== newAttributes.newType;
             this.model.save({
                 type: newAttributes.newType,
-                index: newAttributes.newPosition
+                next: newAttributes.newPosition,
+                prev: this.model.get('next')
             }, {
                 success: this.onDropTrigger
             });
         },
 
         onDropTrigger: function () {
-            app.vent.trigger('itemsNumberChanged');
+            if (this.isListChanged) {
+                app.vent.trigger('itemsNumberChanged');
+            }
             app.vent.trigger('sortList', this.model);
         },
 

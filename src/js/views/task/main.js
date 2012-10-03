@@ -19,7 +19,7 @@ define([
 
         events: {
             'submit form': 'createTask',
-            'sortreceive': 'onSortReceive'
+            'sortupdate': 'onSortReceive'
         },
 
         initialize: function () {
@@ -46,7 +46,6 @@ define([
 
         createTask: function (event) {
             var form = event.currentTarget;
-
             event.preventDefault();
             if (form.checkValidity && form.checkValidity()) {
                 this.collection.create({
@@ -76,10 +75,19 @@ define([
             });
         },
 
-        onSortList: function (model) {
-            if (model.get('type') === this.listType) {
+        onSortList: function (modelSorted) {
+            var isSameList = modelSorted.get('type') === this.listType;
+            if (isSameList) {
                 // TODO here it needs to be implement the algo for re-sorting the list
-                console.log(model, this);
+                // http://stackoverflow.com/questions/12705911/algorithm-to-sort-items-between-different-lists
+                _.each(app.taskCollection.models, function (model) {
+                    if (model.get('next') === modelSorted.get('next') && model.get('id') !== modelSorted.get('id') && model.get('type') === modelSorted.get('type')) {
+                        console.log(model.attributes, modelSorted.attributes);
+                        model.save({
+                            next: modelSorted.get('prev')
+                        });
+                    }
+                });
             }
         },
 
