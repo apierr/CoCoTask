@@ -1,11 +1,12 @@
 /*global define*/
 define([
+    'jquery',
     'underscore',
     'marionette',
     'tpl!../../../templates/task/taskItem.hbs',
     '../../app',
     'bootstrapEditable'
-], function (_, Marionette, taskItemTemplate, app) {
+], function ($, _, Marionette, taskItemTemplate, app) {
     "use strict";
 
     return Marionette.ItemView.extend({
@@ -24,7 +25,16 @@ define([
         },
 
         onRender: function () {
-            this.$el.find('label').editable({
+            // sortInAction variable is used to avoid of displaying the popup when moving the item.
+            var sortInAction = false;
+
+            this.$el.find('label').mouseup(function (event) {
+                sortInAction = 'absolute' === $(event.target).closest('li').css('position');
+            }).click(function (event) {
+                if (sortInAction) {
+                    event.stopImmediatePropagation();
+                }
+            }).editable({
                 type: 'textarea',
                 name: 'task-name',
                 validate: this.editTaskName,
