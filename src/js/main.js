@@ -17,7 +17,7 @@
             bootstrapAlert: componentsDir + 'bootstrap/js/bootstrap-alert',
             bootstrapPopover: componentsDir + 'bootstrap/js/bootstrap-popover',
             bootstrapTooltip: componentsDir + 'bootstrap/js/bootstrap-tooltip',
-            bootstrapEditable: '../../vendor/js/bootstrap-editable',
+            bootstrapEditable: '../../vendor/js/bootstrap-editable.min',
             text: componentsDir + 'text/text',
             tpl: 'utils/handlebars_templates'
         },
