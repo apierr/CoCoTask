@@ -22,6 +22,10 @@ define([
             }
         },
 
+        comparator: function(task) {
+            return task.get('next');
+        },
+
         loadFixture: function () {
             _.each(fixture, this.createModel);
         },

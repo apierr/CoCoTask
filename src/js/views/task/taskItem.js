@@ -21,7 +21,7 @@ define([
         },
 
         initialize: function () {
-            _.bindAll(this, ['editTaskName']);
+            _.bindAll(this, 'editTaskName');
         },
 
         onRender: function () {
@@ -51,12 +51,18 @@ define([
             app.vent.trigger('itemsNumberChanged');
         },
 
-        onDrop: function (event, newTaskState) {
+        // TODO this should be avoided putting the listId in the header list
+        onDrop: function (event, listId) {
+            var isListChanged = this.model.get('type') !== listId;
+
             this.model.save({
-                type: newTaskState
+                type: listId
             }, {
                 success: function () {
-                    app.vent.trigger('itemsNumberChanged');
+                    if (isListChanged) {
+                        app.vent.trigger('itemsNumberChanged');
+                    }
+                    app.vent.trigger('sortLists');
                 }
             });
         },
