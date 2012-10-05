@@ -3,7 +3,8 @@ define([
     'marionette',
     'tpl!../../templates/main.hbs',
     './task/main',
-    'jqueryUi'
+    'jqueryUi',
+    'jqueryUiTouch'
 ], function (Marionette, mainTemplate, TaskView) {
     "use strict";
 

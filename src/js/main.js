@@ -9,6 +9,7 @@
             underscore: componentsDir + 'underscore/underscore-min',
             jquery: componentsDir + 'jquery/jquery',
             jqueryUi: componentsDir + 'jquery-ui/jquery-ui.min',
+            jqueryUiTouch: '../../vendor/js/jquery.ui.touch-punch.min',
             backbone: componentsDir + 'backbone/backbone-min',
             backboneLocalStorage: componentsDir + 'Backbone.localStorage/backbone.localStorage-min',
             marionette: componentsDir + 'backbone.marionette/lib/amd/backbone.marionette.min',
@@ -56,6 +57,9 @@
             },
             jqueryUi: {
                 deps: ['jquery']
+            },
+            jqueryUiTouch: {
+                deps: ['jqueryUi']
             }
         }
     });
